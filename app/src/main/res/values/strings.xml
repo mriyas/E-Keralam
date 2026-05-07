@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">InfoApp</string>
+    <string name="app_name">i24hr</string>
+    <string name="app_slogan">All services at your finger tip!</string>
 </resources>

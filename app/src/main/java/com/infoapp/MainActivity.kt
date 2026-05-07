@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
-import com.google.firebase.database.FirebaseDatabase
 import com.infoapp.core.network.AppNavGraph
 import com.infoapp.presentation.theme.InfoAppTheme
 import com.infoapp.tools.FirebaseSeeder
@@ -22,7 +21,7 @@ class MainActivity : ComponentActivity() {
         // ⚠️ Run ONCE to seed data, then delete these lines
         FirebaseSeeder.seed(
             onSuccess = { Log.d("Seed", "✅ Done!") },
-            onError   = { Log.e("Seed", "❌ ${it.message}") }
+            onError = { Log.e("Seed", "❌ ${it.message}") }
         )
         setContent {
             InfoAppTheme {

@@ -33,6 +33,7 @@ import coil.request.ImageRequest
 import com.infoapp.domain.model.MenuItem
 import com.infoapp.presentation.components.ErrorScreen
 import com.infoapp.presentation.components.ShimmerGrid
+import com.infoapp.presentation.dashboard.carousel.DashboardCarousel
 import com.infoapp.presentation.theme.*
 import java.net.URLDecoder
 
@@ -79,10 +80,30 @@ fun MenuGridScreen(
                         if (state.items.isEmpty()) {
                             EmptyState()
                         } else {
-                            MenuGrid(
-                                items = state.items,
-                                onItemClick = onMenuItemClick
-                            )
+                            Column(modifier = Modifier.fillMaxSize()) {
+                                // Only show carousel on root dashboard
+                                if (isRoot) {
+                                    Spacer(Modifier.height(12.dp))
+                                    DashboardCarousel(
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                    Spacer(Modifier.height(8.dp))
+                                    Text(
+                                        text = "Explore our services",
+                                        style = MaterialTheme.typography.headlineMedium.copy(
+                                            color = TextPrimary,
+                                            fontWeight = FontWeight.Bold
+                                        ),
+                                        modifier = Modifier.padding(horizontal = 16.dp)
+                                    )
+                                }
+                                MenuGrid(
+                                    items = state.items,
+                                    onItemClick = onMenuItemClick,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+
                         }
                     }
                 }
@@ -135,7 +156,8 @@ private fun DashboardTopBar(
 @Composable
 private fun MenuGrid(
     items: List<MenuItem>,
-    onItemClick: (MenuItem) -> Unit
+    onItemClick: (MenuItem) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val animatedItems = remember { mutableSetOf<String>() }
 
@@ -144,7 +166,7 @@ private fun MenuGrid(
         contentPadding = PaddingValues(16.dp),
         horizontalArrangement = Arrangement.spacedBy(14.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         itemsIndexed(
             items = items,

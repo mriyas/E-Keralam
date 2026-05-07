@@ -1,6 +1,7 @@
 package com.infoapp.presentation.splash
 
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -13,9 +14,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
+import com.google.accompanist.drawablepainter.rememberDrawablePainter
+import com.infoapp.R
 import com.infoapp.presentation.theme.Primary
 import kotlinx.coroutines.delay
 
@@ -69,16 +77,25 @@ fun SplashScreen(onSplashComplete: () -> Unit) {
                     .background(Color.White.copy(alpha = 0.25f)),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = "ℹ️",
-                    fontSize = 48.sp
+                val context = LocalContext.current
+                val drawable = remember {
+                    ContextCompat.getDrawable(context, R.mipmap.ic_launcher)
+                }
+
+                Image(
+                    painter = rememberDrawablePainter(drawable = drawable),
+                    contentDescription = "App Logo",
+                    modifier = Modifier
+                        .size(80.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
                 )
             }
 
             Spacer(Modifier.height(24.dp))
 
             Text(
-                text = "InfoApp",
+                text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.displayLarge.copy(
                     fontWeight = FontWeight.ExtraBold,
                     color = Color.White
@@ -89,7 +106,7 @@ fun SplashScreen(onSplashComplete: () -> Unit) {
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = "Your Information Hub",
+                text = stringResource(R.string.app_slogan),
                 style = MaterialTheme.typography.bodyLarge.copy(
                     color = Color.White.copy(alpha = textAlpha)
                 )

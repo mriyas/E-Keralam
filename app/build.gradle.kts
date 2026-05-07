@@ -16,7 +16,7 @@ android {
         minSdk = 26
         targetSdk = 35
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0.001.Beta"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -59,7 +59,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons)
     implementation(libs.androidx.navigation.compose)
-
+    implementation(libs.accompanist.drawablepainter)
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

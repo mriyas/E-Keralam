@@ -1,9 +1,11 @@
 package com.infoapp.core.network
 
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.*
 import androidx.navigation.compose.*
 import com.google.firebase.database.FirebaseDatabase
+import com.infoapp.R
 import com.infoapp.core.utils.Screen
 import com.infoapp.domain.model.MenuItem
 import com.infoapp.presentation.dashboard.MenuGridScreen
@@ -32,7 +34,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
         // ── Root Dashboard ───────────────────────────────────────────────
         composable(Screen.Dashboard.route) {
             MenuGridScreen(
-                title = "Dashboard",
+                title = stringResource(R.string.app_name),
                 isRoot = true,
                 onMenuItemClick = { item -> handleMenuItemNavigation(navController, item) }
             )
