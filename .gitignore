@@ -1,0 +1,54 @@
+# ─────────────────────────────
+# Android / IntelliJ / Gradle
+# ─────────────────────────────
+
+*.iml
+.gradle/
+local.properties
+/.idea/
+.idea/
+.DS_Store
+/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# Keystore files
+*.jks
+*.keystore
+
+# Kotlin
+*.class
+
+# Gradle
+.gradle
+build/
+
+# Navigation safe args
+**/build/generated/
+
+# Log files
+*.log
+
+# Android Studio
+*.hprof
+
+# Firebase
+google-services.json
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kotlin Multiplatform (if any)
+.kotlin/
+
+# Secrets
+*.env
