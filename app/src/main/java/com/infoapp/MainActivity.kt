@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        // ⚠️ Run ONCE to seed data, then delete these 6 lines
+        // ⚠️ Run ONCE to seed data, then delete these lines
         FirebaseSeeder.seed(
             onSuccess = { Log.d("Seed", "✅ Done!") },
             onError   = { Log.e("Seed", "❌ ${it.message}") }

@@ -120,15 +120,12 @@ from `google-services.json`. No manual URL needed.
 
 ### 3. Seed Dummy Data
 
-```bash
-cd InfoApp
-npm install firebase-admin
-
-# Download your service account key from:
-# Firebase Console → Project Settings → Service Accounts → Generate new private key
-# Save it as: InfoApp/serviceAccountKey.json
-
-node seed_rtdb.js
+```kotlin
+// ⚠️ Run ONCE to seed data, then delete these lines
+FirebaseSeeder.seed(
+    onSuccess = { Log.d("Seed", "✅ Done!") },
+    onError   = { Log.e("Seed", "❌ ${it.message}") }
+)
 ```
 
 The seed script writes **36 nodes** organised as:
