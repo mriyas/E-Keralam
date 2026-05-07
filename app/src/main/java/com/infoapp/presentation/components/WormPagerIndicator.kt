@@ -1,4 +1,4 @@
-package com.infoapp.presentation.dashboard.carousel
+package com.infoapp.presentation.components
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring

@@ -1,4 +1,4 @@
-package com.infoapp.presentation.dashboard.carousel
+package com.infoapp.presentation.components
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -31,8 +32,8 @@ fun CarouselShimmer(modifier: Modifier = Modifier) {
             Color(0xFFF3F4F6),
             Color(0xFFE5E7EB)
         ),
-        start = androidx.compose.ui.geometry.Offset(translate - 300f, 0f),
-        end = androidx.compose.ui.geometry.Offset(translate, 0f)
+        start = Offset(translate - 300f, 0f),
+        end = Offset(translate, 0f)
     )
 
     Box(

@@ -38,6 +38,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.infoapp.domain.model.CarouselItem
+import com.infoapp.presentation.components.CarouselShimmer
+import com.infoapp.presentation.components.WormPagerIndicator
 import kotlinx.coroutines.delay
 import kotlin.math.absoluteValue
 
