@@ -36,8 +36,6 @@ import com.infoapp.presentation.components.ShimmerGrid
 import com.infoapp.presentation.theme.*
 import java.net.URLDecoder
 
-// ─── Screen ───────────────────────────────────────────────────────────────────
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MenuGridScreen(
@@ -93,7 +91,6 @@ fun MenuGridScreen(
     }
 }
 
-// ─── Top Bar ──────────────────────────────────────────────────────────────────
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -143,7 +140,7 @@ private fun MenuGrid(
     val animatedItems = remember { mutableSetOf<String>() }
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
+        columns = GridCells.Fixed(3),
         contentPadding = PaddingValues(16.dp),
         horizontalArrangement = Arrangement.spacedBy(14.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
@@ -221,74 +218,79 @@ private fun MenuCard(
         colors = CardDefaults.cardColors(containerColor = CardColors[colorIndex]),
         border = BorderStroke(1.5.dp, CardBorderColors[colorIndex])
     ) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            Column(
+        MenuCardContent(item)
+    }
+}
+
+@Composable
+private fun MenuCardContent(item: MenuItem) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(14.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            // Icon
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(14.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                    //.size(36.dp)
+                    .clip(CircleShape)
+                    .background(Color.White.copy(alpha = 0.7f)),
+                contentAlignment = Alignment.Center
             ) {
-                // Icon
-                Box(
-                    modifier = Modifier
-                        .size(64.dp)
-                        .clip(CircleShape)
-                        .background(Color.White.copy(alpha = 0.7f)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    if (item.iconUrl.isNotBlank()) {
-                        AsyncImage(
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data(item.iconUrl)
-                                .crossfade(true)
-                                .build(),
-                            contentDescription = item.name,
-                            modifier = Modifier
-                                .size(44.dp)
-                                .clip(CircleShape),
-                            contentScale = ContentScale.Crop
+                if (item.iconUrl.isNotBlank()) {
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(item.iconUrl)
+                            .crossfade(true)
+                            .build(),
+                        contentDescription = item.name,
+                        modifier = Modifier
+                            .size(36.dp)
+                            .clip(CircleShape),
+                        contentScale = ContentScale.Crop
+                    )
+                } else {
+                    Text(
+                        text = item.name.take(1).uppercase(),
+                        style = MaterialTheme.typography.headlineMedium.copy(
+                            color = Primary,
+                            fontWeight = FontWeight.Bold
                         )
-                    } else {
-                        Text(
-                            text = item.name.take(1).uppercase(),
-                            style = MaterialTheme.typography.headlineMedium.copy(
-                                color = Primary,
-                                fontWeight = FontWeight.Bold
-                            )
-                        )
-                    }
+                    )
                 }
-
-                Spacer(Modifier.height(10.dp))
-
-                // Name
-                Text(
-                    text = item.name,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 13.sp
-                    ),
-                    textAlign = TextAlign.Center,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    color = OnBackground
-                )
             }
 
-            // Sub-menu indicator badge
-            if (item.hasSubMenu) {
-                Icon(
-                    imageVector = Icons.Default.ChevronRight,
-                    contentDescription = "Has submenu",
-                    tint = Primary,
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(8.dp)
-                        .size(18.dp)
-                        .background(Color.White.copy(alpha = 0.8f), CircleShape)
-                )
-            }
+            Spacer(Modifier.height(10.dp))
+
+            // Name
+            Text(
+                text = item.name,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp
+                ),
+                textAlign = TextAlign.Center,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                color = OnBackground
+            )
+        }
+
+        // Sub-menu indicator badge
+        if (item.hasSubMenu) {
+            Icon(
+                imageVector = Icons.Default.ChevronRight,
+                contentDescription = "Has submenu",
+                tint = Primary,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(8.dp)
+                    .size(18.dp)
+                    .background(Color.White.copy(alpha = 0.8f), CircleShape)
+            )
         }
     }
 }
