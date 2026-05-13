@@ -1,4 +1,4 @@
-# InfoApp — Firebase Realtime Database Driven Information App
+# E-Keralam — All Kerala government services at your finger tip
 
 A clean, production-ready Android app that reads all menu/content configuration from
 **Firebase Realtime Database** and renders a drill-down grid dashboard with rich content screens.
