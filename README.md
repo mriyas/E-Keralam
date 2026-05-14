@@ -24,6 +24,8 @@ A clean, production-ready Android app that reads all menu/content configuration 
 
 ## 🏛️ Architecture
 
+Architecture Daigram : https://excalidraw.com/#json=8xUcwxmW8zbcCpjibTFrd,woH4dirRmq64xov1uq0yiQ
+
 ```
 app/src/main/java/com/infoapp/
 ├── core/
