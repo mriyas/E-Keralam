@@ -102,7 +102,6 @@ private fun DetailContent(item: MenuItem) {
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        // ── Hero / Icon banner ──────────────────────────────────────────
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -135,14 +134,13 @@ private fun DetailContent(item: MenuItem) {
 
         Column(modifier = Modifier.padding(horizontal = 20.dp)) {
 
-            // ── Title ────────────────────────────────────────────────────
+
             Text(
                 text = item.name,
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                 color = OnBackground
             )
 
-            // ── Body text ────────────────────────────────────────────────
             if (item.text.isNotBlank()) {
                 Spacer(Modifier.height(16.dp))
                 SectionCard {
@@ -155,7 +153,6 @@ private fun DetailContent(item: MenuItem) {
                 }
             }
 
-            // ── YouTube Player ───────────────────────────────────────────
             if (videoId != null) {
                 Spacer(Modifier.height(20.dp))
                 SectionLabel(icon = "🎬", label = "Video")
@@ -166,7 +163,6 @@ private fun DetailContent(item: MenuItem) {
                 )
             }
 
-            // ── Image ────────────────────────────────────────────────────
             if (item.imageUrl.isNotBlank()) {
                 Spacer(Modifier.height(20.dp))
                 SectionLabel(icon = "🖼️", label = "Gallery")
@@ -189,7 +185,6 @@ private fun DetailContent(item: MenuItem) {
                 )
             }
 
-            // ── Primary action button ────────────────────────────────────
             if (item.primaryButtonText.isNotBlank() && item.primaryButtonAction.isNotBlank()) {
                 Spacer(Modifier.height(28.dp))
                 Button(

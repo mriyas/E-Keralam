@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// ─── State ────────────────────────────────────────────────────────────────────
 
 sealed interface MenuGridUiState {
     data object Loading : MenuGridUiState
@@ -19,7 +18,6 @@ sealed interface MenuGridUiState {
     data class Error(val message: String) : MenuGridUiState
 }
 
-// ─── ViewModel ────────────────────────────────────────────────────────────────
 
 @HiltViewModel
 class MenuGridViewModel @Inject constructor(

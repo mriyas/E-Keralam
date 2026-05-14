@@ -13,7 +13,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FirebaseMenuDataSource @Inject constructor(
+class FirebaseDataSource @Inject constructor(
     private val database: FirebaseDatabase
 ) {
     companion object {

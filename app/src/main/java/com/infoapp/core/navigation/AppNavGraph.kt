@@ -1,10 +1,9 @@
-package com.infoapp.core.network
+package com.infoapp.core.navigation
 
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.*
 import androidx.navigation.compose.*
-import com.google.firebase.database.FirebaseDatabase
 import com.infoapp.R
 import com.infoapp.core.utils.Screen
 import com.infoapp.domain.model.MenuItem
@@ -20,7 +19,6 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
         startDestination = Screen.Splash.route
     ) {
 
-        // ── Splash ───────────────────────────────────────────────────────
         composable(Screen.Splash.route) {
             SplashScreen(
                 onSplashComplete = {
@@ -31,7 +29,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
 
-        // ── Root Dashboard ───────────────────────────────────────────────
+
         composable(Screen.Dashboard.route) {
             MenuGridScreen(
                 title = stringResource(R.string.app_name),
@@ -40,7 +38,6 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
 
-        // ── Drill-down sub-menu grid ─────────────────────────────────────
         composable(
             route = Screen.MenuGrid.route,
             arguments = listOf(
@@ -57,7 +54,6 @@ fun AppNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
 
-        // ── Detail / Content screen ──────────────────────────────────────
         composable(
             route = Screen.Detail.route,
             arguments = listOf(

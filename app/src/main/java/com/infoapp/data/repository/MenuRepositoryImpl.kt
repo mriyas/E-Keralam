@@ -1,6 +1,6 @@
 package com.infoapp.data.repository
 
-import com.infoapp.data.remote.FirebaseMenuDataSource
+import com.infoapp.data.remote.FirebaseDataSource
 import com.infoapp.domain.model.MenuItem
 import com.infoapp.domain.repository.MenuRepository
 import kotlinx.coroutines.flow.Flow
@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 class MenuRepositoryImpl @Inject constructor(
-    private val dataSource: FirebaseMenuDataSource
+    private val dataSource: FirebaseDataSource
 ) : MenuRepository {
 
     override fun getRootMenuItems(): Flow<Result<List<MenuItem>>> =
