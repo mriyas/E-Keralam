@@ -97,7 +97,7 @@ fun ShimmerGrid() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                repeat(2) {
+                repeat(3) {
                     ShimmerMenuCard(modifier = Modifier.weight(1f))
                 }
             }

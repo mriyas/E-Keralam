@@ -226,38 +226,25 @@ private fun MenuCard(
         label = "card_alpha"
     )
 
-    Card(
-        onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(1f)
-            .graphicsLayer {
-                scaleX = scale
-                scaleY = scale
-                this.alpha = alpha
-            },
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = CardColors[colorIndex]),
-        border = BorderStroke(1.5.dp, CardBorderColors[colorIndex])
-    ) {
-        MenuCardContent(item)
-    }
+    MenuCardContent(item, onClick)
 }
 
 @Composable
-private fun MenuCardContent(item: MenuItem) {
-    Box(modifier = Modifier.fillMaxSize()) {
+private fun MenuCardContent(item: MenuItem, onClick: () -> Unit,) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .clickable(true, onClick = onClick)
+    ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(14.dp),
+                .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             // Icon
             Box(
                 modifier = Modifier
-                    //.size(36.dp)
+                    .size(64.dp)
                     .clip(CircleShape)
                     .background(Color.White.copy(alpha = 0.7f)),
                 contentAlignment = Alignment.Center
@@ -270,7 +257,7 @@ private fun MenuCardContent(item: MenuItem) {
                             .build(),
                         contentDescription = item.name,
                         modifier = Modifier
-                            .size(36.dp)
+                            .size(56.dp)
                             .clip(CircleShape),
                         contentScale = ContentScale.Crop
                     )
@@ -301,8 +288,8 @@ private fun MenuCardContent(item: MenuItem) {
             )
         }
 
-        // Sub-menu indicator badge
-        if (item.hasSubMenu) {
+        // Sub-menu indicator badge, now it is forcefully disabled
+        if (item.hasSubMenu && false) {
             Icon(
                 imageVector = Icons.Default.ChevronRight,
                 contentDescription = "Has submenu",

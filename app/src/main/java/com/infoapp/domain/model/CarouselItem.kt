@@ -6,5 +6,5 @@ data class CarouselItem(
     val targetUrl: String = "",
     val title: String = "",
     val order: Int = 0,
-    val isActive: Boolean = true
+    val isActive: Boolean = true,
 )

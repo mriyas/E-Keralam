@@ -10,6 +10,7 @@ data class MenuItem(
     val text: String = "",
     val youtubeUrl: String = "",
     val imageUrl: String = "",
+    val gallery: List<String> = emptyList(),
     val primaryButtonText: String = "",
     val primaryButtonAction: String = "",  // URL or deep link
     val parentId: String? = null

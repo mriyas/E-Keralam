@@ -28,9 +28,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.infoapp.core.utils.YouTubeUtils
+import com.infoapp.domain.model.CarouselItem
 import com.infoapp.domain.model.MenuItem
 import com.infoapp.presentation.components.ErrorScreen
 import com.infoapp.presentation.components.LoadingScreen
+import com.infoapp.presentation.dashboard.carousel.CarouselPager
 import com.infoapp.presentation.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -153,15 +155,7 @@ private fun DetailContent(item: MenuItem) {
                 }
             }
 
-            if (videoId != null) {
-                Spacer(Modifier.height(20.dp))
-                SectionLabel(icon = "🎬", label = "Video")
-                Spacer(Modifier.height(8.dp))
-                YoutubePlayerComposable(
-                    videoId = videoId,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+            var galleryHeaderAdded = false
 
             if (item.imageUrl.isNotBlank()) {
                 Spacer(Modifier.height(20.dp))
@@ -182,6 +176,34 @@ private fun DetailContent(item: MenuItem) {
                             RoundedCornerShape(16.dp)
                         ),
                     contentScale = ContentScale.FillWidth
+                )
+                galleryHeaderAdded = true
+            }
+
+            if (!galleryHeaderAdded && item.gallery.isNotEmpty()) {
+                Spacer(Modifier.height(20.dp))
+                SectionLabel(icon = "🖼️", label = "Gallery")
+                Spacer(Modifier.height(8.dp))
+                CarouselPager(
+                    items = item.gallery.map {
+                        CarouselItem(
+                            imageUrl = it,
+                        )
+                    },
+                    pagerHeight = 240.dp,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    onItemClick = {  },
+                )
+            }
+
+            if (videoId != null) {
+                Spacer(Modifier.height(20.dp))
+                SectionLabel(icon = "🎬", label = "Video")
+                Spacer(Modifier.height(8.dp))
+                YoutubePlayerComposable(
+                    videoId = videoId,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
 

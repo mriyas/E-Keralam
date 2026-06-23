@@ -30,6 +30,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
@@ -70,9 +71,10 @@ fun DashboardCarousel(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun CarouselPager(
+fun CarouselPager(
     items: List<CarouselItem>,
     modifier: Modifier = Modifier,
+    pagerHeight: Dp = 176.dp,
     onItemClick: ((CarouselItem) -> Unit)?
 ) {
     val pagerState = rememberPagerState(pageCount = { items.size })
@@ -98,7 +100,7 @@ private fun CarouselPager(
             pageSpacing = 12.dp,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(170.dp)
+                .height(pagerHeight)
         ) { page ->
             val pageOffset = (
                     (pagerState.currentPage - page) + pagerState.currentPageOffsetFraction

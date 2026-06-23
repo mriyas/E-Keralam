@@ -34,7 +34,8 @@ data class MenuItemDto(
     @get:PropertyName("primaryButtonText") @set:PropertyName("primaryButtonText") var primaryButtonText: String = "",
     @get:PropertyName("primaryButtonAction") @set:PropertyName("primaryButtonAction") var primaryButtonAction: String = "",
     // RTDB doesn't support plain arrays reliably → use Map<childId, true>
-    @get:PropertyName("subMenuIds") @set:PropertyName("subMenuIds") var subMenuIds: Map<String, Boolean> = emptyMap()
+    @get:PropertyName("subMenuIds") @set:PropertyName("subMenuIds") var subMenuIds: Map<String, Boolean> = emptyMap(),
+    @get:PropertyName("gallery") @set:PropertyName("gallery") var gallery: Map<String, String> = emptyMap(),
 ) {
     fun toDomain(id: String): MenuItem = MenuItem(
         id = id,
@@ -46,6 +47,7 @@ data class MenuItemDto(
         text = text,
         youtubeUrl = youtubeUrl,
         imageUrl = imageUrl,
+        gallery = gallery.values.toList(),
         primaryButtonText = primaryButtonText,
         primaryButtonAction = primaryButtonAction
     )

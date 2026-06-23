@@ -12,11 +12,11 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.kinfo.org"
+        applicationId = "com.ekeralam.org"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0.001.Beta"
+        versionCode = 2
+        versionName = "1.0.0.002.Beta"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
